@@ -1,1 +1,57 @@
 
+
+let p1={
+    fname:"Alok", 
+    lname:"jha",
+    address: {
+        block:"crystal",
+        state:"Uttar Pradesh"
+    } 
+}
+
+/* 
+
+let p2=p1; 
+
+p2.fname="Alok Jha";
+solution to this problem is:
+
+
+let p2={               we cannot use p1.key_name what if there are 200 keys?
+    fname:p1.fname,
+}  
+
+
+let p2={
+    ...p1         this would copy all key of p1 into p2 
+}
+
+
+let p2={
+    fname:p1.fname,       address objects{} reference(address) is passed into 
+    address:p1.address    p2.address object which will again change for p1 if I 
+                          change p2.address.block/state=values;
+}
+  THIS IS CALLED **SHALLOW COPY** where we copy the the key's values but objects 
+reference remains
+
+
+let p2={           this is also a form of shallow copy cause we cant copy all the objects
+    address:{      into p2 what if there are 200 objects??
+        ...p1.address
+    }
+}
+
+const p1KaString=JSON.stringify(p1);   here object->String->Copy String->Object
+console.log(p1KaString)                why? cause String don't have addresses
+let p2=JSON.parse(p1KaString)          this called serialization and de-serialization
+                                       of object
+
+
+    
+*/
+
+
+
+console.log(p2)
+console.log(p1)
