@@ -1,0 +1,37 @@
+
+https://fastapi.tiangolo.com/tutorial/ 
+
+this is the fastApi documentation guide 
+
+*************************************************************************************************************************************************
+In this context:
+
+"format is just an annotation and does not affect validation."
+
+Meaning:
+Format in this context refers to a hint or annotation that provides additional information about the expected structure or appearance of a value (e.g., date, email).
+
+However, format itself does not directly affect the validation of the data; it only serves as a suggestion or documentation.
+
+Explanation:
+For example, if you're validating a field that should represent a date, you might use a format annotation to indicate that the date should follow a certain structure (e.g., "YYYY-MM-DD").
+
+In Pydantic (which FastAPI uses for validation), an example might be:
+
+python
+Copy
+from pydantic import BaseModel, Field
+from datetime import date
+
+class Item(BaseModel):
+    name: str
+    birthdate: date = Field(..., format="yyyy-MM-dd")
+Here, format="yyyy-MM-dd" is just a hint. It does not enforce the actual validation logic (i.e., checking whether the date is in that exact format). Pydantic will still validate the date itself but not validate the exact string format (it will automatically parse the date).
+
+Why doesn't format affect validation?
+Validation typically refers to the logic that checks if a value is of the correct type (e.g., string, integer, date).
+
+Format is used more as documentation or guidance to help developers understand how a value should be represented (e.g., a valid email format or a valid phone number format).
+
+*************************************************************************************************************************************************
+
