@@ -1,0 +1,74 @@
+
+
+if(!Array.prototype.MyForEach){
+    Array.prototype.MyForEach= function(userFn){
+        const OriginalArr= this; // Current Object Ki taraf point krta hai
+
+        for(let i=0; i<OriginalArr.length;i++){
+            userFn(OriginalArr[i],i);
+        }
+    };
+}
+
+if(!Array.prototype.MyMap){
+    Array.prototype.MyMap=function(userfn){
+        // this is a custom .map function created as a polyfill 
+        const result=[]
+
+
+        for(let i=0;i<this.length;i++){
+            // this refer to the arr.MyMap()  arr object{}
+            const value= userfn(this[i],i)
+            // whatever value userfn return gets stored in value and then the result[]
+            result.push(value)
+        }
+        return result;
+    };
+}
+
+const arr= [1,2,3,4,5,6];
+
+// Error: .map function doesnt exist in this arr variable  
+
+// Real Signature ko samjo - No return, function input, value,index
+//  calls my fns for every value
+// whatever function user passes in MyForEach() brackets is under userfn
+
+
+// arr.MyForEach(function(value,index){
+//     console.log(`My For Each Value at Index ${index} is ${value}`);
+// })
+
+const n=arr.MyMap((r)=>r*2)
+console.log(n)
+// new array have been created instead of updating the older one in map
+// userfn = (r)=>r*2   
+
+/*
+
+suppose .forEach function does not exist on arr variable
+real Signature
+
+*/
+
+// Filter 
+// Signature: Return - new array | input: userFn,
+// agar user ka function True return krta hai to uss value ko include krta hai new arr me
+
+
+if(!Array.prototype.MyFilter){
+    Array.prototype.MyFilter=function(userFn){
+        const result=[]
+
+        for(let i=0;i<this.length;i++){
+            if(userFn(this[i])){
+                result.push(this[i]);
+            }
+        }
+        return result;
+    }
+}
+
+
+const n2= arr.MyFilter((e)=>e % 2 == 0);
+console.log(n2)
