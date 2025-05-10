@@ -1,0 +1,69 @@
+Function.prototype.describe= function(){
+    console.log(`Function name is ${this.name}`)
+};
+
+
+function greet(name){
+    return `Hello ${name}`
+}
+
+// greet.describe();
+// here this will pick the name of the function as its value 
+
+function add(a,b){
+    return a+b;
+}
+// function declaration
+
+const subtract=function(a,b){
+    return a-b;
+}
+// function expression
+
+const multiply= (a,b)=> a*b
+// arrow function
+
+function applyOpration(a,b,operation){
+    return operation(a,b)
+}
+
+const result=applyOpration(5,4,(x,y)=>x/y)
+
+// this is called first class function where we 
+
+
+function createCounter(){
+    let count=0;
+    return function(){
+        count++;
+        return count;
+    }
+}
+// the returned anonymous function has access to count because it is inheriting from 
+// the createCounter function , also now the counter and createCounter are pointing 
+// to the same memory in space 
+
+
+const counter= createCounter();
+// console.log(counter())
+
+(function(){
+    console.log("alok");
+})()
+// IIFE function 
+/*
+Function Declaration:
+
+(function() { console.log("alok"); }) defines an anonymous function. This is just a function expression, but it is not executed immediately.
+
+The function is wrapped in parentheses to treat it as an expression, not a declaration. A function declaration like function foo() {} would not execute until explicitly called.
+
+The () After the Function:
+
+The () after the function expression is what triggers the immediate invocation of the function.
+
+When the JavaScript interpreter sees this, it first treats the function as an expression (because of the parentheses) and then calls it immediately by using the second set of parentheses.
+*/
+
+
+
