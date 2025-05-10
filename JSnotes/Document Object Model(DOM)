@@ -1,0 +1,37 @@
+// console.log(window)
+// the window command is not a part of our node js engine although it ran smoothly in
+// browser 
+
+function backgroundcolorchange(color){
+    document.body.style.backgroundColor=color
+}
+
+const darkbutton= document.getElementById('dark-button')
+
+// darkbutton.innerText="changed the game"
+// manipulated the inner HTML using Dom
+
+
+// darkbutton.addEventListener('click',function(){
+//     console.log("I got clicked");
+//     backgroundcolorchange("black");
+// })
+
+// darkbutton.addEventListener('click',function(){
+//     console.log("two events triggered using same action by eventlistners");
+// })
+
+darkbutton.addEventListener('click',()=>{
+    console.log(document.body.style.backgroundColor);
+    const currentColor=document.body.style.backgroundColor;
+
+    if(!currentColor || currentColor == 'white') {
+        backgroundcolorchange('black');
+        darkbutton.innerText='Dark Mode'
+    }else{
+        backgroundcolorchange('white');
+        darkbutton.innerText='Light Mode'
+    }
+
+})
+
