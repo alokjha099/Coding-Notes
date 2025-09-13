@@ -1,0 +1,68 @@
+const user={
+    name:{
+        first:"alok",
+        last:"Jha"
+    },
+    property:function (){
+        console.log("this is a func");
+    }
+}
+
+// user["name"]["first"]="keshav"; changed the value at 
+// nested loop 
+
+// user.newFunc=function (){
+//     console.log("this is an added function");
+// } you can add new function into an object as well 
+
+
+// console.log(typeof {})
+// console.log(user);
+
+// abstraction exmple
+
+// class Animal{
+//      sound(){
+//          throw new Error("Method sound() should be overriden");  
+        // we throw error cause the dog subclass could 
+        // forget to call the sound() and since we dont have
+        // abstract keyword here. it wont throw error otherwise.
+        
+//      }
+// }
+
+// class Dog extends Animal{
+   
+//      sound(){
+//         console.log("dog barks");
+//     }
+    
+// }
+
+// const  d1=new Dog();
+// d1.sound();
+
+
+function BankAccount(owner, balance) {
+  let _balance = balance; // private variable
+
+  this.owner = owner;
+
+  this.deposit = function(amount) {
+    _balance += amount;
+    console.log(`Deposited ${amount}.`);
+  };
+
+  this.getBalance = function() {
+    return _balance; // controlled access
+  };
+}
+
+const account = new BankAccount("Harshita", 1000);
+account.deposit(500);         // Deposited 500
+console.log(account.getBalance()); // 1500
+console.log(account._balance); 
+
+
+
+
