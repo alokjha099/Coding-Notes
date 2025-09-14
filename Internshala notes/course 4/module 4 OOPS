@@ -124,6 +124,141 @@ const v1=new Vip("alok","alok@gmail",1);
 
 
 
+const obj1={
+    first:"alok",
+    last: "jha",
+    property:function(){
+        console.log(`welcome ${this.first} ${this.last}`);
+    }
+}
+
+
+const obj2={
+    first:"mark",
+    last: "Zukerberg",
+    
+}
+
+// obj1.property();
+// obj1.property.call(obj2);
+// these are call function where you can use 1 objects 
+// function into other object's execution context and the 
+// this keyword will refer to this new object's keys
+
+
+let prop =  function(age,hobby){
+    console.log(`this is a custom method ${this.first} and ${age} and my hobby is ${hobby}`);
+} 
+// we can call property using call and assign it to an object
+// as well and pass other arguments next to it.
+
+
+
+// prop.apply(obj1,[22,"badminton"]);
+// use apply when the values are already in an array format
+// like num=[1,2,4] just pass apply.(obj,num)
+
+
+// let approve=prop.bind(obj1,[22,"badminton"]);
+// console.log(approve);
+// approve();  doesnt call the function immediately instead
+// the this value automatically sets to what you have passed 
+
+
+
+// this function is an example of all these three combined 
+function createGreeting(firstName, lastName) {
+    // Define person object with firstName and lastName properties
+    const person = {
+        firstName: firstName,
+        lastName: lastName
+    };
+    
+    
+    
+    // Define greet function within createGreeting
+    function greet() {
+        console.log(`Hello, ${this.firstName} ${this.lastName}!`);
+    }
+    
+    // Use call to invoke greet with person context (callGreet)
+     function callGreet() {
+        greet.call(person);
+     }
+    // Use apply to invoke greet with person context and array of arguments (applyGreet)
+    function applyGreet() {
+        greet.apply(person);
+    }
+    // Use bind to create a bound function and assign it to bindGreet
+    const bindGreet = greet.bind(person);
+    
+    callGreet();
+    applyGreet();
+    bindGreet();
+}
+
+// createGreeting("John", "Doe");
+
+
+// const obj={
+//     x: 10,
+//     y:() => {
+//         console.log(this);
+//     }
+// }
+
+// obj.y();
+
+// arrow function doesnt have their own this and they 
+// simply inherit it from their lexical scope and in this case
+// its their global scope which is undefined in nodejs case
+// and window object in browser case. 
+
+// const obj={
+//     x: 10,
+//     z: function() {
+//         const y= () => {
+//         console.log(this);
+//     }
+//     y();
+//     }
+// }
+
+// obj.z();  output:{ x: 10, z: [Function: z] }
+// as you can see in the output y() takes z's parent which is
+// obj as its lexical inheritance. 
+
+function createCounter() {
+  // Define counterObj with count property
+  const counterObj = { count: 0 };
+  // Define increment arrow function within createCounter
+  counterObj.increment = function() {
+    counterObj.count++;
+    console.log(this.count);
+  };
+  // Return the increment function
+  return counterObj;
+}
+const counter = createCounter();
+counter.increment();
+counter.increment();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
