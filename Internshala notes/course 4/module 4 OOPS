@@ -65,4 +65,70 @@ console.log(account._balance);
 
 
 
+class Customer{
+    constructor(name,email){
+        this.email=email; 
+        this.name=name;
+            }
+// constructor are special functions that executes automatically
+// when we want to create an object or instance using new 
+// keyword 
+
+// this.name creates a local variable inside the class by itself
+// we don't have to explicitly create it and let name (not needed)
+    
+    get info(){
+        return this.name;
+    }
+
+// we use get to make info like a property of object and 
+// not like a function hence (customer1.info) without brackets
+// this is helpful when we want complex functions to look 
+// like an object properties.
+    
+    details(){
+        console.log(`this is ${this.name} and emai is ${this.email}`)
+    }
+}
+
+// const customer1=new Customer("alok","alokjha@gmail");
+// const customer2=new Customer("keshav","keshav@gmail");
+
+// console.log(customer1);
+// console.log(customer1.info);
+// console.log(customer2);
+
+
+class Vip extends Customer{
+    
+    constructor(name,email,viplevel){
+        super(name,email);
+        this.viplevel=viplevel;
+    }
+    
+    
+    UpdateViplevel(level){
+      this.viplevel=level;
+      return`vip level is ${this.viplevel}`;
+    //   if I dont return and just console.log here, it will 
+    // return the 
+    }
+}
+
+const v1=new Vip("alok","alok@gmail",1);
+
+
+
+// console.log(v1);
+// console.log(v1.UpdateViplevel(3))
+
+
+
+
+
+
+
+
+
+
 
